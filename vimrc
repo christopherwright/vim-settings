@@ -97,7 +97,7 @@ else
 endif
 
 "
-" Custom key combos
+" Remap / Custom key combos
 "
 " With a map leader it's possible to do extra key combinations
 let mapleader = ","
@@ -106,6 +106,9 @@ let g:mapleader = ","
 nmap <leader>s :w!<cr>          " Fast save
 nmap <leader>d :wq!<cr>         " Fast save/quit
 nmap <leader>x :q!<cr>          " Fast quit (no save)
+
+nnoremap <silent> <C-n> :tabnext<CR>
+nnoremap <silent> <C-p> :tabprevious<CR>
 
 
 "
