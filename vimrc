@@ -114,6 +114,5 @@ nnoremap <silent> <C-p> :tabprevious<CR>
 "
 " TODO
 "
-" Research backup options, if has("vms")? versions?
-" Look at if has("gui_running")
-" Fugitive?
+" Backup to a tmp directory
+" Add fuzzy-finder / textmate
