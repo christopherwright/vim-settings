@@ -7,13 +7,13 @@ new_vim_rc = File.join(new_vim_dir, "vimrc")
 
 desc "Install vim configuration"
 task :install do
-  if File.exists?(vim_rc)
+  if File.exists?(vim_rc) or File.symlink?(vim_rc)
     File.delete(vim_rc)
   end
   puts "Creating link from #{vim_rc} to #{new_vim_rc}"
   File.symlink(new_vim_rc, vim_rc)
 
-  if File.exists?(vim_dir)
+  if File.exists?(vim_dir) or File.symlink?(vim_dir)
     FileUtils.rm_rf(vim_dir)
   end
   puts "Creating link from #{vim_dir} to #{new_vim_dir}"
