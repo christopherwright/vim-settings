@@ -13,7 +13,7 @@ set noerrorbells
 set vb t_vb=
 set ignorecase        " Ignore case when searching
 set backspace=indent,eol,start " Allows backspacing over these character types
-set mouse=a           " Enables console mouse-support
+set mouse=            " Disables console mouse-support
 
 "set autoindent        " Copy indent from current line when starting new line
 "set smartindent       " Attempts to indent appropiately near curly braces
