@@ -10,11 +10,11 @@ To install:
 
 ## Key bindings
 
-**,s**&nbsp;&nbsp;&nbsp;Save
-**,d**&nbsp;&nbsp;&nbsp;Save and quit
-**,x**&nbsp;&nbsp;&nbsp;Quit without saving
-**Ctrl-n**&nbsp;&nbsp;&nbsp;Tab next
-**Ctrl-p**&nbsp;&nbsp;&nbsp;Tab previous
+**,s**&nbsp;&nbsp;&nbsp;Save  
+**,d**&nbsp;&nbsp;&nbsp;Save and quit  
+**,x**&nbsp;&nbsp;&nbsp;Quit without saving  
+**Ctrl-n**&nbsp;&nbsp;&nbsp;Tab next  
+**Ctrl-p**&nbsp;&nbsp;&nbsp;Tab previous  
 
 ## Credits
 
