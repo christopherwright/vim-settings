@@ -1,111 +1,30 @@
+let b:ruby_no_expensive=1
 
-" Vim syntax file
-" Language:         Treetop
-" Maintainer:       Nikolai Weibull <now@bitwi.se>
-" Latest Revision:  2011-03-14
+syntax match ttOperators /[&~!*+?\/]/
+syntax keyword ttDefine end
+syntax keyword ttKeywords include super
 
-if exists("b:current_syntax")
-  finish
-endif
+syntax match ttComment /#.*$/
+syntax match ttName /\w\+/ contained
+syntax match ttDefine "\<\(module\|grammar\|rule\)\>"   nextgroup=ttName skipwhite skipnl
+syntax match ttTag /\w\+\%(:\)/
 
-let s:cpo_save = &cpo
-set cpo&vim
+syntax include @Ruby syntax/ruby.vim
+syntax region BlockRuby matchgroup=ttQuote start=/{/ end=/^\s*}$/ transparent contains=@Ruby
 
-syn keyword treetopTodo
-      \ contained
-      \ TODO
-      \ FIXME
-      \ XXX
-      \ NOTE
+syntax region ttPattern matchgroup=ttQuote start=/\[/ end=/\]/
+syntax region ttString  matchgroup=ttQuote start=/'/  end=/'/
+syntax region ttString  matchgroup=ttQuote start=/"/  end=/"/
+syntax region ttClass   matchgroup=ttQuote start=/</  end=/>/
 
-syn match treetopComment
-                        \ '#.*'
-                        \ display
-                        \ contains=treetopTodo
+highlight link ttQuote Delimiter
+highlight link ttString String
+highlight link ttPattern String
 
-syn include @treetopRuby syntax/ruby.vim
-unlet b:current_syntax
-
-syn keyword treetopKeyword
-                         \ require
-                         \ end
-syn region  treetopKeyword
-                         \ matchgroup=treetopKeyword
-                         \ start='\<\%(grammar\|include\|module\)\>\ze\s'
-                         \ end='$'
-                         \ transparent
-                         \ oneline
-                         \ keepend
-                         \ contains=@treetopRuby
-syn keyword treetopKeyword
-                         \ rule
-                         \ nextgroup=treetopRuleName
-                         \ skipwhite skipnl
-
-syn match   treetopGrammarName
-                             \ '\u\w*'
-                             \ contained
-
-syn match   treetopRubyModuleName
-                                \ '\u\w*'
-                                \ contained
-
-syn match   treetopRuleName
-                          \ '\h\w*'
-                          \ contained
-
-syn region  treetopString
-                        \ matchgroup=treetopStringDelimiter
-                        \ start=+"+
-                        \ end=+"+
-syn region  treetopString
-                        \ matchgroup=treetopStringDelimiter
-                        \ start=+'+
-                        \ end=+'+
-
-syn region  treetopCharacterClass
-                                \ matchgroup=treetopCharacterClassDelimiter
-                                \ start=+\[+
-                                \ skip=+\\\]+
-                                \ end=+\]+
-
-syn region  treetopRubyBlock
-                           \ matchgroup=treetopRubyBlockDelimiter
-                           \ start=+{+
-                           \ end=+}+
-                           \ contains=@treetopRuby
-
-syn region  treetopSemanticPredicate
-                           \ matchgroup=treetopSemanticPredicateDelimiter
-                           \ start=+[!&]{+
-                           \ end=+}+
-                           \ contains=@treetopRuby
-
-syn region  treetopSubclassDeclaration
-                           \ matchgroup=treetopSubclassDeclarationDelimiter
-                           \ start=+<+
-                           \ end=+>+
-                           \ contains=@treetopRuby
-
-syn match   treetopEllipsis
-                          \ +''+
-
-hi def link treetopTodo                         Todo
-hi def link treetopComment                      Comment
-hi def link treetopKeyword                      Keyword
-hi def link treetopGrammarName                  Constant
-hi def link treetopRubyModuleName               Constant
-hi def link treetopRuleName                     Identifier
-hi def link treetopString                       String
-hi def link treetopStringDelimiter              treetopString
-hi def link treetopCharacterClass               treetopString
-hi def link treetopCharacterClassDelimiter      treetopCharacterClass
-hi def link treetopRubyBlockDelimiter           PreProc
-hi def link treetopSemanticPredicateDelimiter   PreProc
-hi def link treetopSubclassDeclarationDelimiter PreProc
-hi def link treetopEllipsis                     Special
-
-let b:current_syntax = 'treetop'
-
-let &cpo = s:cpo_save
-unlet s:cpo_save
+highlight link ttDefine Define
+highlight link ttKeywords Statement
+highlight link ttName Identifier
+highlight link ttClass Constant
+highlight link ttOperators Operator
+highlight link ttComment Comment
+highlight link ttTag Type
