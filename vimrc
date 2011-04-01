@@ -1,6 +1,4 @@
 "
-" General
-"
 set nocompatible      " Use vim defaults
 set history=50        " Keep 50 lines of command history
 set tabstop=2         " Number of space of tab character
@@ -53,7 +51,9 @@ if &term =~ "xterm"
 endif
 
 syntax on
-colorscheme railscasts
+set background=dark
+let g:solarized_termcolors=16
+colorscheme solarized
 
 
 "
