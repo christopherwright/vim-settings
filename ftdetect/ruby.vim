@@ -27,3 +27,6 @@ au BufNewFile,BufRead .autotest				set filetype=ruby
 
 " eRuby
 au BufNewFile,BufRead *.erb,*.rhtml			set filetype=eruby
+
+" Activewarehouse-etl file
+au BufNewFile,BufRead *.ctl,*.ebf			set filetype=ruby
